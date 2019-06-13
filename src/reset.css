@@ -1,0 +1,14 @@
+body,
+html {
+  min-height: 100vh;
+  background: #f4f8fb;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: none;
+  list-style: none;
+  text-decoration: none;
+}
