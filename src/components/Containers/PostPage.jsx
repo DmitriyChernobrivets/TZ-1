@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { RetrievePost, fetchDeletePost } from "../../store/actions/actions";
-import PostPage from "../presentational/PostPage";
-import { getPosts } from "../../selectors/selectors";
+import PostPageView from "../presentational/PostPage";
+import { getPost, getPostError } from "../../selectors/selectors";
 import PropTypes from "prop-types";
+import ErrorHandler from "../presentational/Error";
 
-class InitialPostContainer extends Component {
+class PostPage extends Component {
   static propTypes = {
     post: null
   };
@@ -20,20 +21,25 @@ class InitialPostContainer extends Component {
     history.push("/");
   };
   render() {
-    const { post } = this.props;
-    return post && <PostPage post={post} deletePost={this.handleDeletePost} />;
+    const { post, postError } = this.props;
+    if (postError) {
+      return <ErrorHandler text={postError} />;
+    }
+    return post && <PostPageView post={post} deletePost={this.handleDeletePost} />;
   }
 }
 
-InitialPostContainer.propTypes = {
+PostPage.propTypes = {
   post: PropTypes.object,
   RetrievePost: PropTypes.func,
   deletePost: PropTypes.func,
   match: PropTypes.object
 };
+
 const mapStateToProps = state => {
   return {
-    post: getPosts(state)
+    post: getPost(state),
+    postError: getPostError(state)
   };
 };
 const mapDispatchToProps = dispatch => {
@@ -46,4 +52,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(InitialPostContainer);
+)(PostPage);

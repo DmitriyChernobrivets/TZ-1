@@ -1,3 +1,6 @@
-const getPosts = state => state.post;
+const getPost = state => state.post.item;
+const getAllPosts = state => state.AllPosts.items;
+const getAllPostsError = state => state.AllPosts.error;
+const getPostError = state => state.post.error;
 
-export { getPosts };
+export { getPost, getAllPosts, getPostError, getAllPostsError };

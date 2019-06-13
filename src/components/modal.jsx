@@ -1,5 +1,5 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const ModalContainer = styled.div`
@@ -11,10 +11,12 @@ const ModalContainer = styled.div`
   align-items: center;
   top: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.4);
 `;
-const Modal = props => {
-  return <ModalContainer>{props.children}</ModalContainer>;
+const Modal = ({ children }) => {
+  return <ModalContainer>{children}</ModalContainer>;
 };
-
+Modal.propTypes = {
+  cildren: PropTypes.element
+};
 export default Modal;

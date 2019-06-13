@@ -6,5 +6,6 @@ import post from "./post";
 export default combineReducers({
   AllPosts,
   post
+
   // loading
 });

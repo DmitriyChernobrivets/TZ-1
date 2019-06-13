@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import CommetsContainer from "../Containers/Comments";
 import EditContainer from "../Containers/Edit";
+import { Button } from "../sharedStyles";
 import Modal from "../modal";
+import PropTypes from "prop-types";
 
 const Container = styled.div`
   background-color: yellow;
@@ -15,27 +17,31 @@ const Container = styled.div`
 `;
 const Title = styled.h2`
   color: red;
+  margin-bottom: 20px;
 `;
-const Body = styled.p``;
+const Body = styled.h2`
+  color: red;
+  margin-bottom: 20px;
+`;
+
 const Controls = styled.p`
   display: flex;
   justify-content: space-around;
 `;
-const Button = styled.button`
-  padding: 10px;
-  color: red;
-`;
-const Comments = styled.p``;
 
-const PostPage = ({ post, deletePost }) => {
+const Comments = styled.p`
+  margin-bottom: 20px;
+`;
+
+const PostPageView = ({ post, deletePost }) => {
   const [isOpenComments, toogleComment] = useState(false);
   const [isOpenEdit, toogleEdit] = useState(false);
   const { title, body, id, comments } = post;
   return (
     <Container>
-      <Title>{title}</Title>
-      <Body>{body}</Body>
-      <Comments>Comments</Comments>
+      <Title>Title : {title}</Title>
+      <Body>Body : {body}</Body>
+      {comments && <Comments>Comments : </Comments>}
       {comments && comments.map(comment => <div key={comment.id}>{comment.body}</div>)}
 
       <Controls>
@@ -61,4 +67,9 @@ const PostPage = ({ post, deletePost }) => {
     </Container>
   );
 };
-export default PostPage;
+
+PostPageView.propTypes = {
+  post: PropTypes.object.isRequired,
+  deletePost: PropTypes.func.isRequired
+};
+export default PostPageView;

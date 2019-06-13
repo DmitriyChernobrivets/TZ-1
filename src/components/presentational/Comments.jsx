@@ -1,20 +1,21 @@
 import React from "react";
-import styled from "styled-components";
+import { Container, Input, Button, Title } from "../sharedStyles";
+import PropTypes from "prop-types";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-const CommentsForm = props => {
-  const { handleinputs, close, sendComments } = props;
+const CommentsForm = ({ handleinputs, close, sendComments }) => {
   return (
     <Container>
-      <h3>Please Enter comment: </h3>
-      <input type="text" name="body" onChange={handleinputs} />
-      <button onClick={() => close(false)}>close</button>
-      <button onClick={sendComments}>Submit</button>
+      <Title>Please Enter comment: </Title>
+      <Input type="text" name="body" onChange={handleinputs} />
+      <Button onClick={() => close(false)}>close</Button>
+      <Button onClick={sendComments}>Submit</Button>
     </Container>
   );
+};
+CommentsForm.propTypes = {
+  handleinputs: PropTypes.func.isRequired,
+  close: PropTypes.func.isRequired,
+  sendComments: PropTypes.func.isRequired
 };
 
 export default CommentsForm;

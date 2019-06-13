@@ -11,4 +11,5 @@ html {
   border: none;
   list-style: none;
   text-decoration: none;
+  word-wrap: break-word;
 }

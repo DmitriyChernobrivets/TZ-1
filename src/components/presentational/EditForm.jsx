@@ -1,17 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
-import { Button } from "../sharedStyles";
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-const Input = styled.input`
-  padding: 10px
-  font-size: 16px;
-  border: none;
-`;
+import { Button, Input, Container } from "../sharedStyles";
 
 const EditForm = ({ close, handleEditInputs, updatepost }) => {
   return (
@@ -27,8 +16,9 @@ const EditForm = ({ close, handleEditInputs, updatepost }) => {
   );
 };
 EditForm.propTypes = {
-  handleEditInputs: PropTypes.func,
-  updatepost: PropTypes.func
+  handleEditInputs: PropTypes.func.isRequired,
+  close: PropTypes.func.isRequired,
+  updatepost: PropTypes.func.isRequired
 };
 
 export default EditForm;

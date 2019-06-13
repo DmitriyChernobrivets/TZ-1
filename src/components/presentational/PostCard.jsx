@@ -12,12 +12,15 @@ const Card = styled.div`
   margin-right: 20px;
 `;
 const Title = styled.h2`
-  word-wrap: break-word;
+  margin-bottom: 10px;
 `;
 const Body = styled.p`
-  word-wrap: break-word;
+  margin-bottom: 10px;
 `;
-const DateCreated = styled.p``;
+const DateCreated = styled.p`
+  font-style: italic;
+  margin-bottom: 10px;
+`;
 
 const PostCard = props => {
   const { title, body, id, date } = props;
@@ -26,7 +29,9 @@ const PostCard = props => {
       <Title> Title : {title}</Title>
       <Body> Body : {body}</Body>
       <DateCreated>Created: {date}</DateCreated>
-      <Link to={`posts/${id}`}>View Post</Link>
+      <Link to={`posts/${id}`} style={{ color: "red" }}>
+        View Post
+      </Link>
     </Card>
   );
 };

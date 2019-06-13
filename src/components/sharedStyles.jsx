@@ -5,8 +5,24 @@ export const Button = styled.button`
   outline: none;
   font-size: 15px;
   background-color: #f44336;
-  color: #fff;
   cursor: pointer;
+  color: #fff;
+  margin-bottom: 20px;
+`;
 
-  color: blue;
+export const Input = styled.input`
+padding: 10px
+font-size: 16px;
+border: none;
+margin-bottom: 20px;
+`;
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Title = styled.h3`
+  color: #fff;
+  margin-bottom: 20px;
 `;

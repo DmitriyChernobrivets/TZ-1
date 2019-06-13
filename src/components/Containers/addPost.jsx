@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import AddPost from "../presentational/addPost";
-import styled from "styled-components";
+import Modal from "../modal";
 import { Button } from "../sharedStyles";
+import PropTypes from "prop-types";
 
 class PostAdd extends Component {
   state = {
@@ -10,6 +11,9 @@ class PostAdd extends Component {
     body: ""
   };
 
+  reset = () => {
+    this.setState({ title: "", body: "" });
+  };
   handleAdd = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -19,7 +23,10 @@ class PostAdd extends Component {
   sendPost = () => {
     const { title, body } = this.state;
     const { createPost } = this.props;
+    if (!title.trim() || !body.trim()) return;
     createPost({ body, title });
+    this.toogle();
+    this.reset();
   };
 
   render() {
@@ -27,10 +34,16 @@ class PostAdd extends Component {
     return (
       <div>
         <Button onClick={this.toogle}>Add</Button>
-        {isAddPostOpen && <AddPost handleAdd={this.handleAdd} sendPost={this.sendPost} />}
+        {isAddPostOpen && (
+          <Modal>
+            <AddPost handleAdd={this.handleAdd} close={this.toogle} sendPost={this.sendPost} />
+          </Modal>
+        )}
       </div>
     );
   }
 }
-
+PostAdd.propTypes = {
+  createPost: PropTypes.func
+};
 export default PostAdd;

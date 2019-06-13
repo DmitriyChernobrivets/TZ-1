@@ -16,8 +16,10 @@ class EditContainer extends Component {
   };
   updatePost = () => {
     const { updatePost, post } = this.props;
-    const updatedFields = this.state;
-    updatePost(post.id, updatedFields);
+    const { title, body } = this.state;
+
+    if (!title.trim() || !body.trim()) return;
+    updatePost(post.id, { title, body });
   };
   render() {
     return (

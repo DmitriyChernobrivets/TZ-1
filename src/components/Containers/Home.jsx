@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 // import PropTypes from "prop-types";
+import { getAllPosts, getAllPostsError } from "../../selectors/selectors";
 import { connect } from "react-redux";
 import { fetchAllposts, fetchAddcomment, fetchCreatePost } from "../../store/actions/actions";
 import styled from "styled-components";
 import AddPost from "./addPost";
+import ErrorHandler from "../presentational/Error";
 import PostCard from "../presentational/PostCard";
+import PropTypes from "prop-types";
 
 const PostsWrapper = styled.div`
   display: flex;
@@ -18,16 +21,17 @@ const Main = styled.div`
   width: 80%;
   margin: 0 auto;
 `;
-class PostsContainer extends Component {
+class Home extends Component {
   componentDidMount() {
     const { getPosts } = this.props;
     getPosts();
   }
 
   render() {
-    const { posts, sendComment, createPost } = this.props;
+    const { posts, sendComment, createPost, allpostsError } = this.props;
     return (
       <Main>
+        {allpostsError && <ErrorHandler text={allpostsError} />}
         <AddPost createPost={createPost} />
         <PostsWrapper>
           {posts.map(post => (
@@ -39,12 +43,13 @@ class PostsContainer extends Component {
   }
 }
 
-// PostsContainer.propTypes = {
-
-// }
+Home.propTypes = {
+  getPosts: PropTypes.func
+};
 const mapStateToProps = state => {
   return {
-    posts: state.AllPosts
+    posts: getAllPosts(state),
+    allpostsError: getAllPostsError(state)
   };
 };
 const mapDispatchToProps = dispatch => {
@@ -58,4 +63,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PostsContainer);
+)(Home);
