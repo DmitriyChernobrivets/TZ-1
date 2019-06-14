@@ -44,7 +44,9 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  getPosts: PropTypes.func
+  getPosts: PropTypes.func,
+  posts: PropTypes.arrayOf(PropTypes.object),
+  allpostsError: PropTypes.string
 };
 const mapStateToProps = state => {
   return {

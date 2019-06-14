@@ -11,10 +11,10 @@ export const Button = styled.button`
 `;
 
 export const Input = styled.input`
-padding: 10px
-font-size: 16px;
-border: none;
-margin-bottom: 20px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  margin-bottom: 20px;
 `;
 
 export const Container = styled.div`

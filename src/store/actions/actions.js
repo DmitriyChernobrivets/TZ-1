@@ -82,7 +82,7 @@ const fetchDeletePost = id => {
 const fetchUpdatePost = (id, updatedFields) => {
   return async dispatch => {
     try {
-      const date = moment().format("MMM Do YY");
+      const date = moment().calendar();
       const sendingData = {
         ...updatedFields,
         date: date
@@ -98,7 +98,7 @@ const fetchUpdatePost = (id, updatedFields) => {
 const fetchCreatePost = payload => {
   return async dispatch => {
     try {
-      const date = moment().format("MMM Do YY");
+      const date = moment().calendar();
       const sendingData = {
         ...payload,
         date: date

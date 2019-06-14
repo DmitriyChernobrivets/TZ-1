@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, Input, Container } from "../sharedStyles";
+import { Button, Input, Container, Title } from "../sharedStyles";
 
 const EditForm = ({ close, handleEditInputs, updatepost }) => {
   return (
     <Container>
-      <h3>Change Title</h3>
+      <Title>Change Title</Title>
       <Input type="text" name="title" onChange={handleEditInputs} />
-      <h3>Change body</h3>
+      <Title>Change body</Title>
       <Input type="text" name="body" onChange={handleEditInputs} />
 
       <Button onClick={() => close(false)}>Close</Button>

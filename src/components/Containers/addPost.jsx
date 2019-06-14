@@ -35,7 +35,7 @@ class PostAdd extends Component {
       <div>
         <Button onClick={this.toogle}>Add</Button>
         {isAddPostOpen && (
-          <Modal>
+          <Modal state={isAddPostOpen}>
             <AddPost handleAdd={this.handleAdd} close={this.toogle} sendPost={this.sendPost} />
           </Modal>
         )}
